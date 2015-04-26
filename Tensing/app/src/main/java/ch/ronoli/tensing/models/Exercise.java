@@ -13,6 +13,8 @@ public class Exercise {
     private String link;
     private Category category;
 
+    public Exercise(){}
+
     public Exercise(String name, String text, String description, String thumbnail, String link, Category category){
         this.name = name;
         this.text = text;
@@ -68,5 +70,13 @@ public class Exercise {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
