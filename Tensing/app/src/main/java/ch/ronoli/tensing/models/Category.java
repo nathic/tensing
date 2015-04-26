@@ -8,6 +8,8 @@ public class Category {
     private String name;
     private Type type;
 
+    public Category(){}
+
     public Category(String name, Type type){
         this.name = name;
         this.type = type;
