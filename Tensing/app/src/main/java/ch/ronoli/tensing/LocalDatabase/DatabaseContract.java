@@ -1,4 +1,4 @@
-package ch.ronoli.tensing.SQLiteDatabase;
+package ch.ronoli.tensing.LocalDatabase;
 
 import android.provider.BaseColumns;
 
@@ -6,6 +6,8 @@ public final class DatabaseContract {
     private static final String INT_TYPE = " INTEGER";
     private static final String VARCHAR_TYPE = " VARCHAR(100)";
     private static final String TEXT_TYPE = " TEXT";
+    public static final String CATEGORY_TYPE = " categories";
+    public static final String TYPE_TYPE = " types";
 
     private static final String COMMA = ", ";
 
@@ -24,7 +26,7 @@ public final class DatabaseContract {
         public static final String CREATE_TABLE =
                 "CREATE TABLE " + TABLE_NAME + " (" +
                         _ID + INT_TYPE + PRIMARY_KEY + COMMA +
-                        COLUMN_NAME_NAME + VARCHAR_TYPE + NOT_NULL + COMMA +
+                        COLUMN_NAME_NAME + VARCHAR_TYPE + NOT_NULL +
                         " );";
 
         public static final String DROP_TABLE = DROP_TABLE_STATEMENT + TABLE_NAME + ";";
@@ -34,13 +36,12 @@ public final class DatabaseContract {
         public static final String TABLE_NAME = "categories";
         public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_TYPE = "type";
-        public static final String COLUMN_NAME_TYPES = "types";
 
         public static final String CREATE_TABLE =
                 "CREATE TABLE " + TABLE_NAME + " (" +
                         _ID + INT_TYPE + PRIMARY_KEY + COMMA +
                         COLUMN_NAME_NAME + VARCHAR_TYPE + NOT_NULL + COMMA +
-                        COLUMN_NAME_TYPE + COLUMN_NAME_TYPES + NOT_NULL +COMMA +
+                        COLUMN_NAME_TYPE + TYPE_TYPE + NOT_NULL +COMMA +
                         " FOREIGN KEY (" + COLUMN_NAME_TYPE + ") REFERENCES " + TypeTable.TABLE_NAME + " (" + TypeTable._ID + ")" +
                         " );";
 
@@ -55,7 +56,6 @@ public final class DatabaseContract {
         public static final String COLUMN_NAME_LINK = "link";
         public static final String COLUMN_NAME_THUMBNAIL = "thumbnail";
         public static final String COLUMN_NAME_CATEGORY = "category";
-        public static final String COLUMN_NAME_CATEGORIES = "categories";
 
         public static final String CREATE_TABLE =
                 "CREATE TABLE " + TABLE_NAME + " (" +
@@ -65,7 +65,7 @@ public final class DatabaseContract {
                         COLUMN_NAME_TEXT + TEXT_TYPE + NOT_NULL + COMMA +
                         COLUMN_NAME_LINK + VARCHAR_TYPE + COMMA +
                         COLUMN_NAME_THUMBNAIL + VARCHAR_TYPE + COMMA +
-                        COLUMN_NAME_CATEGORY + COLUMN_NAME_CATEGORIES + NOT_NULL + COMMA +
+                        COLUMN_NAME_CATEGORY + CATEGORY_TYPE + NOT_NULL + COMMA +
                         " FOREIGN KEY (" + COLUMN_NAME_CATEGORY + ") REFERENCES " + CategoryTable.TABLE_NAME + " (" + CategoryTable._ID + ")" +
                         " );";
 

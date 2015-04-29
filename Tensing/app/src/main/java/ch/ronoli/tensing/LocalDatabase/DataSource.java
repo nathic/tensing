@@ -1,4 +1,4 @@
-package ch.ronoli.tensing.SQLiteDatabase;
+package ch.ronoli.tensing.LocalDatabase;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,9 +8,6 @@ import java.sql.SQLException;
 import java.util.List;
 import org.apache.http.MethodNotSupportedException;
 
-/**
- * Created by nathic on 26.04.2015.
- */
 public abstract class DataSource<DatabaseTableType> {
     protected Context context;
     protected SQLiteDatabase database;

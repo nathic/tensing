@@ -1,9 +1,8 @@
-package ch.ronoli.tensing.SQLiteDatabase;
+package ch.ronoli.tensing.LocalDatabase;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.provider.ContactsContract;
 
 import org.apache.http.MethodNotSupportedException;
 
@@ -13,9 +12,6 @@ import java.util.List;
 
 import ch.ronoli.tensing.models.Type;
 
-/**
- * Created by nathic on 26.04.2015.
- */
 public class TypeDataSource extends DataSource<Type> {
     private static String REQUEST_TABLE_NAME = DatabaseContract.TypeTable.TABLE_NAME;
 
