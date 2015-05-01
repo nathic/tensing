@@ -4,18 +4,23 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ch.ronoli.tensing.RemoteDatabase.CategoryFragment;
+import ch.ronoli.tensing.RemoteDatabase.ExerciseFragment;
 
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+    private final String TAG = "Main Activity";
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -45,9 +50,29 @@ public class MainActivity extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
+
         FragmentManager fragmentManager = getFragmentManager();
+        Fragment fragment;
+        Log.i(TAG, "position "+position+1);
+        switch(position+1){
+            case 1:{
+                Log.i(TAG,"new ExerciseFragment object");
+                fragment = new ExerciseFragment();
+                break;
+            }
+            case 2:{
+                Log.i(TAG,"new CategoryFragment object");
+                fragment = new CategoryFragment();
+                break;
+            }
+            default:{
+                fragment = new ExerciseFragment();
+                break;
+            }
+        }
+        Log.i(TAG, "Commiting new fragment");
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, fragment)
                 .commit();
     }
 
