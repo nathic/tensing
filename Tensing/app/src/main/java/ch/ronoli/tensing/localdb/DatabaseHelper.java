@@ -1,4 +1,4 @@
-package ch.ronoli.tensing.LocalDatabase;
+package ch.ronoli.tensing.localdb;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

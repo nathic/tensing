@@ -16,11 +16,18 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2"
+            android:text="Exercises" />
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listView"
             android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 
 </RelativeLayout>

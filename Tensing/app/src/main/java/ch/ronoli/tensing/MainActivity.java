@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -14,8 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import ch.ronoli.tensing.RemoteDatabase.CategoryFragment;
-import ch.ronoli.tensing.RemoteDatabase.ExerciseFragment;
+import ch.ronoli.tensing.fragments.CategoryFragment;
+import ch.ronoli.tensing.fragments.ExerciseFragment;
 
 
 public class MainActivity extends Activity
@@ -45,6 +44,8 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        TestData.setUp(getApplicationContext());
     }
 
     @Override
@@ -57,16 +58,16 @@ public class MainActivity extends Activity
         switch(position+1){
             case 1:{
                 Log.i(TAG,"new ExerciseFragment object");
-                fragment = new ExerciseFragment();
+                fragment = ExerciseFragment.newInstance(position+1);
                 break;
             }
             case 2:{
                 Log.i(TAG,"new CategoryFragment object");
-                fragment = new CategoryFragment();
+                fragment = CategoryFragment.newInstance(position+1);
                 break;
             }
             default:{
-                fragment = new ExerciseFragment();
+                fragment = ExerciseFragment.newInstance(position+1);
                 break;
             }
         }

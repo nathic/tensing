@@ -38,4 +38,9 @@ public class Category {
     public void setType(Type type) {
         this.type = type;
     }
+
+    @Override
+    public String toString(){
+        return getName();
+    }
 }
