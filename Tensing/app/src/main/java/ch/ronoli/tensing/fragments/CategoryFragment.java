@@ -1,6 +1,7 @@
 package ch.ronoli.tensing.fragments;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.Loader;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 
+import ch.ronoli.tensing.MainActivity;
 import ch.ronoli.tensing.dataloader.CategorieDataLoader;
 import ch.ronoli.tensing.localdb.CategoryDataSource;
 import ch.ronoli.tensing.models.Category;
@@ -37,14 +39,13 @@ public class CategoryFragment extends ListFragment implements LoaderManager.Load
         // Initialize a Loader with id '1'. If the Loader with this id already
         // exists, then the LoaderManager will reuse the existing Loader.
         getLoaderManager().initLoader(LOADER_ID, null, this);
-        restoreActionBar();
     }
 
-    public void restoreActionBar() {
-        ActionBar actionBar = getActivity().getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("Categories");
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((MainActivity) activity).onSectionAttached(
+                getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     /**
