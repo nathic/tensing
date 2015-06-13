@@ -11,4 +11,13 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+
+
+    <string name="error_field_required">Dieses Feld wird benötigt</string>
+    <string name="registration_longer">Die Registration könnte ein bisschen länger dauern</string>
+    <string name="registration_fail">Die Registration lief leider schief, bitte versuchen Sie es erneut</string>
+    <string name="registration_already_running">Die Registration läuft bereits</string>
+    <string name="registration_running">Bitte warten Sie, Sie werden registriert</string>
+
+
 </resources>

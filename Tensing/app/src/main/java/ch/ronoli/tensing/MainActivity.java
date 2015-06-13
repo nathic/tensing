@@ -1,9 +1,12 @@
 package ch.ronoli.tensing;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -13,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ch.ronoli.tensing.controllers.RegisterActivity;
 import ch.ronoli.tensing.fragments.CategoryFragment;
 import ch.ronoli.tensing.fragments.ExerciseFragment;
 
@@ -30,11 +34,23 @@ public class MainActivity extends Activity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private AccountManager accountManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        accountManager = AccountManager.get(this);
+        Account[] tensingAccounts = accountManager.getAccountsByType("ch.ronoli.tensing");
+        if(tensingAccounts.length == 0){
+            System.out.println("we need to register an account");
+            Intent intent = new Intent(this, RegisterActivity.class);
+            finish();
+            startActivity(intent);
+        } else{
+            System.out.println("helllo you "+tensingAccounts[0].toString());
+        }
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
