@@ -144,6 +144,7 @@ public class RegisterActivity extends Activity{
                     }
                     if(!found){
                         showProgress(false);
+                        cancel(true);
                     }
                 } catch(Exception e){
                     System.err.println("Error");
